@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, Image } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
@@ -32,9 +32,9 @@ class MovieCard extends React.Component {
             <TouchableHighlight onPress={this.props.loadDetails}>
                 <View style={styles.container}>
                     <Image
-                        style={styles.image}
-                        source={img}
+                        style={styles.image}                        
                         resizeMode='contain'
+                        source={img}
                     />
                     <Text style={{ fontSize: 20, fontWeight: 'bold' }}> {props.title} </Text>
                     <Text numberOfLines={3}> {props.overview} </Text>

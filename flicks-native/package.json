@@ -24,6 +24,8 @@
     "react-native": "~0.55.2",
     "react-native-elements": "^0.19.1",
     "react-native-htmlview": "^0.12.1",
+    "react-native-image-progress": "^1.1.0",
+    "react-native-progress": "^3.4.0",
     "react-native-render-html": "^3.10.0",
     "react-navigation": "^2.0.0"
   }
