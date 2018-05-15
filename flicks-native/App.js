@@ -6,7 +6,8 @@ import { createBottomTabNavigator } from 'react-navigation';
 import NowPlaying from './NowPlaying';
 import TopRated from './TopRated';
 
-const Tabs = createBottomTabNavigator({
+const Tabs = createBottomTabNavigator(
+  {
     NowPlaying: {
       screen: NowPlaying
     },
@@ -21,8 +22,8 @@ const Tabs = createBottomTabNavigator({
     tabBarOptions: {
       activeTintColor: '#fff',
       activeBackgroundColor: 'rgba(54,61, 68, 0.5)',
-      inactiveTintColor: "#363d44",
-      inactiveBackgroundColor: "#bdc6cf",
+      inactiveTintColor: '#363d44',
+      inactiveBackgroundColor: '#bdc6cf',
       labelStyle: {
         fontSize: 12,
         padding: 5,
@@ -33,12 +34,6 @@ const Tabs = createBottomTabNavigator({
 );
 
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <Tabs></Tabs>
-    );
-  }
-}
+const App = () => (<Tabs />);
 
-
+export default App;
