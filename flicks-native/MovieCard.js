@@ -33,7 +33,7 @@ const MovieCard = (props) => {
         <TouchableHighlight onPress={props.loadDetails}>
             <View style={styles.container}>
                 <Image
-                    style={styles.image}                        
+                    style={styles.image}
                     resizeMode="contain"
                     source={img}
                 />
