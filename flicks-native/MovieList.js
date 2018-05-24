@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, FlatList, ListFooterComponent, ActivityIndicator } from 'react-native';
+import PropTypes from 'prop-types';
+import { View, FlatList, ActivityIndicator } from 'react-native';
 import MovieCard from './MovieCard';
 import { SearchBar } from 'react-native-elements';
 
@@ -8,7 +9,7 @@ class MovieList extends React.Component {
         super(props);
         this.state = {
             movies: this.props.screenProps.movies
-        }
+        };
     }
 
     componentWillReceiveProps(receivedProps) {
@@ -32,31 +33,44 @@ class MovieList extends React.Component {
                     onClear={this.resetSearch}
                     platform="android"
                     cancelButtonTitle="Cancel"
-                    placeholder='Search...' />
+                    placeholder="Search..."
+                />
                 <FlatList
                     refreshing={props.loading}
                     onRefresh={props.loadMore}
                     data={movies}
-                    keyExtractor={(movie) => movie.id}
+                    keyExtractor={movie => movie.id}
                     onEndReachedThreshold={0.05}
                     onEndReached={props.loadMore}
-                    renderItem={(movieItem) => {
-                        return (
-                            <MovieCard movie={movieItem.item} loadDetails={() => {
-                                this.props.navigation.navigate('MovieDetails', movieItem.item);
-                            }
-                            } />
+                    renderItem={movieItem => (
+                            <MovieCard
+                                movie={movieItem.item}
+                                loadDetails={() => {
+                                    this.props.navigation.navigate('MovieDetails', movieItem.item);
+                                }}
+                            />
                         )
-                    }}
-                    ListFooterComponent={() =>
+                    }
+                    ListFooterComponent={() => (
                         <View>
                             <ActivityIndicator size="large" />
                         </View>
-                    }
+                    )}
                 />
             </View>
         );
     }
 }
+
+MovieList.propTypes = {
+    navigation: PropTypes.shape({
+        navigate: PropTypes.func,
+    }),
+    screenProps: PropTypes.shape({
+        movies: PropTypes.array,
+        loading: PropTypes.bool,
+        loadMore: PropTypes.func,
+    }),
+};
 
 export default MovieList;
